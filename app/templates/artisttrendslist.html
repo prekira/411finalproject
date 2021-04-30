@@ -1,0 +1,30 @@
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <h2>Explorify Playground</h2>
+        
+
+    </head>
+    <!--  -->
+    <body>
+        <h3>Artist Trends for the year:</h3>
+        <!-- <p>{{songlist}}</p> -->
+        <p>Note: If no data known for artist's fan ages, 'None' will be displayed.</p>
+        <br>
+        {% for row in artisttrendslist %}
+        <div class="col-md-12">
+            
+            <p>Artist Name: {{row[0]}}</p>
+            <p>Most Popular Trend: {{row[1]}}</p>
+            <p>Danceability: {{row[2]}}</p>
+            <p>Average Fan Age: {{row[3]}}</p>
+
+            <br>
+        </div>
+        {% endfor %}
+        <button onclick="location.href='/'">Go back</button>
+    </body>
+</html>

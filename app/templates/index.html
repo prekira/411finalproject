@@ -1,0 +1,109 @@
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <h2>Explorify Playground</h2>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    </head>
+    <!--  onload="form1.reset();form2.reset();form3.reset();form4.reset();form5.reset()"-->
+    <body >
+        
+        <h3><table><form action="" method="GET">
+            <td>
+            <label>Select Trend:</label>
+                <select name="option" width="300px">
+                {% for y in trend_list %}
+                <option value="{{ y }}" {% if loop.first %} SELECTED{% endif %}>{{ y }}</option>
+                {% endfor %}
+                </select>
+                
+            <label>Select Song:</label>
+                <select name="option" width="300px">
+                {% for x in song_list %}
+                <option value="{{ x }}" {% if loop.first %} SELECTED{% endif %}>{{ x }}</option>
+                {% endfor %}
+                </select>
+            <!-- <input type="submit" value="Fetch Results"> -->
+            </td>
+
+    </form></table></h3>
+
+        <br>
+        <p>1) Add a song to a trend!</p>
+       
+        <form id="form1"  action="{{ url_for('create') }}" method="post" onsubmit="return validateForm()">
+            <label for="trendname">Trend name:</label>
+            <input type="text" id="trendname1" name="trendname"><br><br>
+            <label for="songname">Song name:</label>
+            <input type="text" id="songname1" name="songname"><br><br>
+            <input type="submit" id="addtotrend" value="Create Trend">
+          </form> 
+
+            
+<br>
+        <p>2) Search for existing trends and songs associated with them.</p>
+
+        <form id="form2"  action="{{ url_for('search') }}" method="get">
+            <label for="trendname2">Trend name:</label>
+            <input type="text" id="trendname2" name="trendname2"><br><br>
+            <input type="submit"  id="findfortrend" value="Show Songs">
+          </form> 
+<br>
+        <p>3) Change the trend a song is associated with. </p>
+        <form id="form3"  action="{{ url_for('update') }}" method="post">
+            <label for="songname3">Song name:</label>
+            <input type="text" id="oldtrendname" name="songname3"><br><br>
+            <label for="newtrendname">New Trend name:</label>
+            <input type="text" id="newtrendname" name="newtrendname"><br><br>
+            <input type="submit" value="Add to Trend">
+          </form> 
+<br>
+        <p>4) Remove a song from a trend.</p>
+        <form id="form4" action="{{ url_for('delete') }}" method="post">
+            <label for="songname5">Song name:</label>
+            <input type="text" id="songname5" name="songname5"><br><br>
+            <input type="submit" value="Delete">
+          </form> 
+<br>
+        <p>5) Find popular songs in Explorify (appears on 2 or more playlists), </p>
+        <form id="form5" action="{{ url_for('special') }}" method="get">
+            <label for="numresults">Number of Songs to Display:</label>
+            <input type="text" id="numresults1" name="numresults"><br><br>
+            <input type="submit" value="Find Songs">
+          </form> 
+          
+        <p>6) Find trends for artists in a given year!</p>
+        <form id="form6" action="{{ url_for('artisttrends') }}" method="get">
+            <label for="year_artist_trend">Year:</label>
+            <input type="text" id="year_artist_trend1" name="year_artist_trend"><br><br>
+            <input type="submit" value="Find Artist Trends">
+          </form> 
+</html>
+<script>
+//     var v_divhideid = songlist//parseFloat(document.getElementById("trendname1").value);
+//  if (isNan(v_divhideid)) {
+//      document.getElementById("listofsongs").style.display = "none";
+//  }
+//  if(!isNaN(v_divhideid))
+//  {
+//    document.getElementById('shownewtrend').style.display = "block";
+//  }
+//  else
+//  {
+//    document.getElementById('shownewtrend').style.display = "none";
+//  }
+ </script> 
+ <script type="text/javascript">
+    function validateForm() {
+      var a = document.forms["form1"]["trendname1"].value;
+      var b = document.forms["form1"]["songname1"].value;
+      if (a == null || a == "", b == null || b == "") {
+        alert("Please Fill All Required Fields");
+        return false;
+      }
+    }
+  </script>
+

@@ -1,0 +1,25 @@
+
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <h2>Explorify Playground</h2>
+        
+
+    </head>
+    <!--  -->
+    <body>
+        <h3>Songs:</h3>
+        <!-- <p>{{songlist}}</p> -->
+        {% for row in songlist %}
+        <div class="col-md-12">
+            <p>Name: {{row[0]}}</p>
+            <p>Artist: {{row[1]}}</p>
+            <p>Year: {{row[2]}}</p>
+            <br>
+        </div>
+        {% endfor %}
+        <button onclick="location.href='/'">Go back</button>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+runtime: python38
+instance_class: F1
+
+env_variables:
+  MYSQL_USER: root
+  MYSQL_PASSWORD: root
+  MYSQL_DB: 'explorify'
+  MYSQL_HOST: 34.123.194.191
+
+handlers:
+  - url: /script
+    static_dir: static/script
+
+  - url: /styles
+    static_dir: static/styles
